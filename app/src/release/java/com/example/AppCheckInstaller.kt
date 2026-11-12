@@ -5,8 +5,10 @@ import com.google.firebase.appcheck.playintegrity.PlayIntegrityAppCheckProviderF
 
 object AppCheckInstaller {
   fun install() {
-    FirebaseAppCheck.getInstance().installAppCheckProviderFactory(
-      PlayIntegrityAppCheckProviderFactory.getInstance()
-    )
+    try {
+      FirebaseAppCheck.getInstance().installAppCheckProviderFactory(
+        PlayIntegrityAppCheckProviderFactory.getInstance()
+      )
+    } catch (_: Throwable) {}
   }
 }

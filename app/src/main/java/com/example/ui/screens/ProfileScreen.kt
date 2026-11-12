@@ -99,6 +99,8 @@ fun ProfileScreen(
   onOpenReclamaciones: () -> Unit = {}
 ) {
   val scrollState = rememberScrollState()
+  val context = LocalContext.current
+  val scope = rememberCoroutineScope()
   var showDeleteDialog by remember { mutableStateOf(false) }
   var showCmsLoginDialog by remember { mutableStateOf(false) }
   var cmsPasswordInput by remember { mutableStateOf("") }
@@ -207,7 +209,12 @@ fun ProfileScreen(
     } else {
       Spacer(modifier = Modifier.height(14.dp))
       OutlinedButton(
-        onClick = onSignOut,
+        onClick = {
+          scope.launch {
+            GoogleSignIn.clearCredentialState(context)
+            onSignOut()
+          }
+        },
         modifier = Modifier
           .fillMaxWidth()
           .testTag("sign_out_button"),
@@ -778,8 +785,9 @@ private fun AccountForm(
         onClick = {
           scope.launch {
             try {
-              onGoogleSignIn(GoogleSignIn.requestIdToken(context))
-            } catch (error: Exception) {
+              val token = GoogleSignIn.requestIdToken(context)
+              onGoogleSignIn(token)
+            } catch (error: Throwable) {
               val message = GoogleSignIn.messageFor(error) ?: return@launch
               onAuthMessage(message)
             }

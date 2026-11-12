@@ -42,7 +42,9 @@ object AccountRepository {
   }
 
   fun signOut() {
-    FirebaseAuth.getInstance().signOut()
+    try {
+      FirebaseAuth.getInstance().signOut()
+    } catch (_: Throwable) {}
   }
 
   suspend fun load(uid: String): LoadedAccount? {

@@ -1,21 +1,14 @@
-# Add project specific ProGuard rules here.
-# You can control the set of applied configuration files using the
-# proguardFiles setting in build.gradle.
-#
-# For more details, see
-#   http://developer.android.com/guide/developing/tools/proguard.html
+# ProGuard / R8 Rules for Fernandina de Jagua Chocolates
 
-# If your project uses WebView with JS, uncomment the following
-# and specify the fully qualified class name to the JavaScript interface
-# class:
-#-keepclassmembers class fqcn.of.javascript.interface.for.webview {
-#   public *;
-#}
+# Credential Manager & Google Identity
+-keep class androidx.credentials.** { *; }
+-keep class com.google.android.libraries.identity.googleid.** { *; }
+-keepclassmembers class * implements androidx.credentials.Credential { *; }
 
-# Uncomment this to preserve the line number information for
-# debugging stack traces.
-#-keepattributes SourceFile,LineNumberTable
+# Firebase Auth & Google Sign-In
+-keep class com.google.firebase.auth.** { *; }
+-keep class com.google.android.gms.auth.api.** { *; }
+-keep class com.google.android.gms.common.** { *; }
 
-# If you keep the line number information, uncomment this to
-# hide the original source file name.
-#-renamesourcefileattribute SourceFile
+# Gson / Moshi models if used
+-keepattributes *Annotation*,Signature,InnerClasses,EnclosingMethod

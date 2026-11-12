@@ -10,14 +10,14 @@ plugins {
 
 android {
   namespace = "com.example"
-  compileSdk { version = release(37) { minorApiLevel = 2 } }
+    compileSdk = 37
 
-  defaultConfig {
+    defaultConfig {
     applicationId = "com.ebyzom.chocolates"
     minSdk = 24
-    targetSdk = 37
-    versionCode = 3
-    versionName = "1.2"
+    targetSdk = 35
+    versionCode = 7
+    versionName = "1.6"
 
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
   }
@@ -68,6 +68,7 @@ android {
     includeInApk = false
     includeInBundle = true
   }
+    compileSdkMinor = 2
 }
 
 // Configure the Secrets Gradle Plugin to use .env and .env.example files

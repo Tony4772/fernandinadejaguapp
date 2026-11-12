@@ -6,7 +6,9 @@ import com.google.firebase.FirebaseApp
 class ChocolatesApp : Application() {
   override fun onCreate() {
     super.onCreate()
-    FirebaseApp.initializeApp(this)
-    AppCheckInstaller.install()
+    try {
+      FirebaseApp.initializeApp(this)
+      AppCheckInstaller.install()
+    } catch (_: Throwable) {}
   }
 }

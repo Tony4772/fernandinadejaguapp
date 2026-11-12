@@ -386,7 +386,22 @@ class ShopViewModel : ViewModel() {
   }
 
   fun signOut() {
-    AccountRepository.signOut()
+    viewModelScope.launch {
+      try {
+        AccountRepository.signOut()
+      } catch (_: Throwable) {}
+      _uiState.update { state ->
+        val newScreen = if (state.currentScreen == CurrentScreen.ShopAdmin) CurrentScreen.Profile else state.currentScreen
+        state.copy(
+          accountName = null,
+          accountEmail = null,
+          favorites = emptySet(),
+          isCmsAdmin = false,
+          accountBusy = false,
+          currentScreen = newScreen
+        )
+      }
+    }
   }
 
   fun deleteAccount(onComplete: () -> Unit) {

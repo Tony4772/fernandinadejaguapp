@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "470694400800-7a7m74v4gen0e8qdr2rq7pplj8k3giur.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ebyzom.chocolates",
+            "certificate_hash": "f91f24ebde36e324dc35bdd8e5b8c8c6ed03e81d"
+          }
+        },
+        {
           "client_id": "470694400800-aenojqtp5oedo4vl8hs2d73039vq2oug.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
