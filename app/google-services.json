@@ -30,6 +30,14 @@
           }
         },
         {
+          "client_id": "470694400800-no68nhlhnq31rolpl2hn1ueoqrpqgir1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ebyzom.chocolates",
+            "certificate_hash": "7fb28b72d254173782cb907d0003fce3353a6e95"
+          }
+        },
+        {
           "client_id": "470694400800-iq8lhltd2odfqhu841gaut5iucdpotoc.apps.googleusercontent.com",
           "client_type": 3
         }

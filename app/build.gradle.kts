@@ -26,10 +26,10 @@ android {
   // and updating Android apps in AI Studio.
   signingConfigs {
     create("release") {
-      val keystorePath = System.getenv("KEYSTORE_PATH") ?: "${rootDir}/my-upload-key.jks"
+      val keystorePath = System.getenv("KEYSTORE_PATH") ?: "${rootDir}/Fernandina de Jagua Keystore"
       storeFile = file(keystorePath)
       storePassword = System.getenv("STORE_PASSWORD")
-      keyAlias = "upload"
+      keyAlias = "key0"
       keyPassword = System.getenv("KEY_PASSWORD")
     }
     create("debugConfig") {
@@ -117,7 +117,8 @@ dependencies {
   implementation(libs.androidx.credentials)
   implementation(libs.androidx.credentials.play.services)
   implementation(libs.googleid)
-  implementation(libs.firebase.appcheck.recaptcha)
+  // recaptcha removido: causaba crash nativo en produccion cuando Play Integrity falla
+  // implementation(libs.firebase.appcheck.recaptcha)
   implementation(libs.firebase.appcheck.playintegrity)
   debugImplementation(libs.firebase.appcheck.debug)
   implementation(libs.kotlinx.coroutines.android)
